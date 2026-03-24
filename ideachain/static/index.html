@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaChain - Protect Your Innovations</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    
+    <div class="auth-container">
+        <!-- Login Form -->
+        <div id="login-view" class="auth-box glass-panel hover-active">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1><i class="fa-solid fa-link"></i> IdeaChain</h1>
+                <p>Welcome back! Securely manage your intellectual property.</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="login-identifier" placeholder="Email or Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <button type="submit">Log In to Dashboard <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                Don't have an account? <a onclick="toggleAuthView('signup')">Sign up</a>
+            </p>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-view" class="auth-box glass-panel hover-active hidden">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>Create Account</h2>
+                <p>Join the blockchain-inspired innovation network.</p>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signup-email" placeholder="Email Address" required>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signup-confirm" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+                <button type="submit">Create Account <i class="fa-solid fa-user-plus" style="margin-left: 8px;"></i></button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                Already have an account? <a onclick="toggleAuthView('login')">Log in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/app.js?v=3"></script>
+    <script>
+        if(localStorage.getItem('token')) {
+            window.location.href = 'dashboard.html';
+        }
+        function toggleAuthView(view) {
+            if(view === 'login') {
+                document.getElementById('login-view').classList.remove('hidden');
+                document.getElementById('signup-view').classList.add('hidden');
+            } else {
+                document.getElementById('login-view').classList.add('hidden');
+                document.getElementById('signup-view').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
